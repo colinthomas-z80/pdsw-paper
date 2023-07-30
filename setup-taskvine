@@ -1,0 +1,99 @@
+#! /bin/bash
+#
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+ENVIRONMENT="${SCRIPT_DIR}/taskvine-env"
+
+decho () {
+    echo "$@" 1>&2
+}
+
+verbose () {
+    echo "$@"
+    "$@"
+    return $?
+}
+
+
+
+find_conda () {
+    if [[ -x ${SCRIPT_DIR}/miniconda3/bin/conda ]]
+    then
+        echo ${SCRIPT_DIR}/miniconda3/bin/conda
+    elif which mamba >& /dev/null
+    then
+        which mamba
+    elif which conda >& /dev/null
+    then
+        which conda
+    elif [[ -x ${HOME}/miniconda3/bin/conda ]]
+    then
+        echo ${HOME}/miniconda3/bin/conda
+    else
+        set -e
+        decho "Could not find conda."
+        decho "Fetching miniconda..."
+        curl -C - -L -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh 1>&2
+        decho "Installing miniconda at: ${SCRIPT_DIR}/miniconda3"
+        sh Miniconda3-latest-Linux-x86_64.sh -b -p ${SCRIPT_DIR}/miniconda3 -s 1>&2
+        set +e
+        echo ${SCRIPT_DIR}/miniconda3/bin/conda
+    fi
+}
+
+create_environment () {
+    conda_exe="$1"
+    path_env="$2"
+    spec="$3"
+
+    if [[ -d ${path_env} ]]
+    then
+        action=update
+    else
+        action=create
+    fi
+
+    echo "${action%?}ing environment..."
+
+	verbose $conda_exe env ${action} -p ${path_env} -f ${spec}
+    return $?
+}
+
+CONDA=$(find_conda)
+echo using conda at $CONDA
+
+if ! create_environment "${CONDA}" "${ENVIRONMENT}" environment.yml
+then
+    decho "Could not create/update environment!"
+    exit 1
+fi
+
+source $(realpath "${ENVIRONMENT}/bin/activate")
+
+# installing these packages from pip, and not conda because coffea is coming
+# from a pip local install, otherwise conda complains.
+pip install matplotlib
+pip install pandas
+
+echo "Packing environment for remote execution..."
+rm -f taskvine-env.tar.gz
+if ! conda-pack --output taskvine-env.tar.gz
+then
+    decho "Could not pack environment!"
+    exit 1
+fi
+
+ln -sf ../../taskvine-env.tar.gz  experiments/fig-10.Independent-Tasks-vs-Shared-Mini-Tasks
+ln -sf ../../taskvine-env.tar.gz  experiments/fig-13a.TopEFT
+
+cat <<EOF
+
+
+    TaskVine conda environment installed succesfully.
+    Activate the environment with:
+    source ./activate-environment
+
+    cd to experiments/fig-* directories to reproduce the papers results
+EOF
+
+exit 0
+
