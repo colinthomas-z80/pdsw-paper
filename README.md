@@ -1,6 +1,3 @@
-[![DOI](https://zenodo.org/badge/613401833.svg)](https://zenodo.org/badge/latestdoi/613401833)
-
-
 # Integrating Node-Local Storage Management with a Workflow System
 
 This repository describes how to setup a TaskVine installation to reproduce the
