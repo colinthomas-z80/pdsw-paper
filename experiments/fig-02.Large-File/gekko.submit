@@ -1,5 +1,5 @@
 universe = vanilla
-executable = /scratch365/cthoma26/run_gkfs
+executable = ./run_gkfs
 output=out
 request_cpus=12
 requirements = (SlotID==1)

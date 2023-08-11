@@ -1,0 +1,14 @@
+# This gives access to the mercury header files
+prefix=/afs/crc.nd.edu/user/c/cthoma26/gekkofs_deps/install
+exec_prefix=/afs/crc.nd.edu/user/c/cthoma26/gekkofs_deps/install
+libdir=/afs/crc.nd.edu/user/c/cthoma26/gekkofs_deps/install/lib
+includedir=/afs/crc.nd.edu/user/c/cthoma26/gekkofs_deps/install/include
+
+Name: mercury
+Description: RPC for High-Performance Computing
+Version: 2.1.0
+URL: http://mercury-hpc.github.io/
+Requires: 
+Libs: -L${libdir}  -lmercury_hl -lmercury -lmercury_util -lna
+Libs.private:  -pthread -lrt -L/afs/crc.nd.edu/user/c/cthoma26/gekkofs_deps/install/lib -lfabric
+Cflags: -I${includedir} 

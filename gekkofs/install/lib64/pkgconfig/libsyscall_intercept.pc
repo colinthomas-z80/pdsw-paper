@@ -1,0 +1,13 @@
+prefix=/afs/crc.nd.edu/user/c/cthoma26/gekkofs_deps/install
+libdir=/afs/crc.nd.edu/user/c/cthoma26/gekkofs_deps/install/lib64
+version=
+includedir=/afs/crc.nd.edu/user/c/cthoma26/gekkofs_deps/install/include
+
+Name: libsyscall_intercept
+Description: libsyscall_intercept - system call intercepting library
+Version: 
+URL: http://github.com/pmem/syscall_intercept
+Requires.private: capstone
+Libs: -L/afs/crc.nd.edu/user/c/cthoma26/gekkofs_deps/install/lib64 -lsyscall_intercept
+Libs.private: -ldl
+Cflags: -I/afs/crc.nd.edu/user/c/cthoma26/gekkofs_deps/install/include

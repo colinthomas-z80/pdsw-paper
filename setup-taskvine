@@ -13,8 +13,6 @@ verbose () {
     return $?
 }
 
-
-
 find_conda () {
     if [[ -x ${SCRIPT_DIR}/miniconda3/bin/conda ]]
     then
@@ -81,9 +79,6 @@ then
     decho "Could not pack environment!"
     exit 1
 fi
-
-ln -sf ../../taskvine-env.tar.gz  experiments/fig-10.Independent-Tasks-vs-Shared-Mini-Tasks
-ln -sf ../../taskvine-env.tar.gz  experiments/fig-13a.TopEFT
 
 cat <<EOF
 
