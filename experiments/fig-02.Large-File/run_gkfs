@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/scratch365/cthoma26/gekkofs_deps/install/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/scratch365/cthoma26/gekkofs_deps/install/lib64
+export LIBGKFS_HOSTS_FILE=/scratch365/cthoma26/gekkohost
+
+/scratch365/cthoma26/gekkofs_deps/install/bin/gkfs_daemon -m /tmp/gekkomnt -r /tmp/gekkoroot$$ -H /scratch365/cthoma26/gekkohost --clean-rootdir &
+
+/scratch365/cthoma26/vine_worker -d all -o debug.$$ --cores 12 condorfe.crc.nd.edu 9123
+
+pkill gkfs_daemon
+

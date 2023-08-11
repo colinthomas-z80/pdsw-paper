@@ -1,0 +1,7 @@
+universe = vanilla
+executable = /scratch365/cthoma26/run_gkfs
+output=out
+request_cpus=12
+requirements = (SlotID==1)
+error=err
+queue 50

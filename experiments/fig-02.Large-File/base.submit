@@ -1,0 +1,9 @@
+universe = vanilla
+executable = ./vine_worker
+arguments = --cores 12 condorfe.crc.nd.edu 9123
+request_cpus=12
+requirements = (SlotID==1)
+output = test.output
+error = test.error
+log = logfile.out
+queue 100
