@@ -1,5 +1,5 @@
 universe = vanilla
-executable = $(ENVIRONMENT)/bin/vine_worker
+executable = $ENV(ENVIRONMENT)/bin/vine_worker
 arguments = --cores 12 condorfe.crc.nd.edu 9123
 request_cpus=12
 requirements = (SlotID==1)

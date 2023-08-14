@@ -1,12 +1,11 @@
 #!/bin/bash
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SHARED_DIR/gekkofs/install/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SHARED_DIR/gekkofs/install/lib64
-export LIBGKFS_HOSTS_FILE=$SHARED_DIR/gekkohost
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/scratch365/cthoma26/pdsw-paper/gekkofs/install/lib:/scratch365/cthoma26/pdsw-paper/gekkofs/install/lib64
+export LIBGKFS_HOSTS_FILE=/scratch365/cthoma26/pdsw-paper/gekkohost
 
-$SHARED_DIR/gekkofs/install/bin/gkfs_daemon -m /tmp/gekkomnt -r /tmp/gekkoroot$$ -H $SHARED_DIR/gekkohost --clean-rootdir &
+/scratch365/cthoma26/pdsw-paper/gekkofs/install/bin/gkfs_daemon -m /tmp/gekkomnt -r /tmp/gekkoroot$$ -H /scratch365/cthoma26/pdsw-paper/gekkohost --clean-rootdir &
 
-$ENVIRONMENT/bin/vine_worker -d all -o debug.$$ --cores 12 $HOST_MACHINE 9123
+/scratch365/cthoma26/pdsw-paper/taskvine-env/bin/vine_worker -d all -o debug.$$ --cores 12 condorfe.crc.nd.edu 9123
 
 pkill gkfs_daemon
 

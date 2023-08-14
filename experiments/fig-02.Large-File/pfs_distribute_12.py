@@ -5,7 +5,7 @@ import ndcctools.taskvine as vine
 import random
 import argparse
 import getpass
-
+import os
 
 
 if __name__ == "__main__":
@@ -58,7 +58,7 @@ if __name__ == "__main__":
     
     for i in range(args.task_count):
         t = vine.Task(
-        command = "cat /scratch365/cthoma26/twogig_4 > /dev/null; sleep 1",
+        command = os.getenv("SHARED_DIR") + "/twogig.size > /dev/null; sleep 1",
         )
         task_id = m.submit(t)
         print(f"submitted task {t.id}: {t.command}")

@@ -7,12 +7,11 @@ then
     exit 1
 fi
 
-SHARED_DIR=$(pwd)
-HOST_MACHINE=$(hostname)
-
+export SHARED_DIR=$(pwd)
+export HOST_MACHINE=$(hostname)
 
 SCRIPT_DIR=$( cd -- "$( dirname -- $(realpath "${BASH_SOURCE[0]}") )" &> /dev/null && pwd )
-ENVIRONMENT="${SCRIPT_DIR}/taskvine-env"
+export ENVIRONMENT="${SCRIPT_DIR}/taskvine-env"
 
 
 source $(realpath "${ENVIRONMENT}/bin/activate")

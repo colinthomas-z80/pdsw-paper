@@ -4,7 +4,7 @@ import ndcctools.taskvine as vine
 import random
 import argparse
 import getpass
-
+import os
 
 
 if __name__ == "__main__":
@@ -56,7 +56,11 @@ if __name__ == "__main__":
     m.tune("worker-source-max-transfers", 3)
     m.tune("file-source-max-transfers", 10)
 
-    landmark = m.declare_url("file:///scratch365/cthoma26/twogig_3", cache="always")
+    url = "file://" + os.getenv("SHARED_DIR") + "/twogig.size"
+
+    print(url)
+
+    landmark = m.declare_url(url, cache="always")
 
     if args.disable_peer_transfers:
         m.disable_peer_transfers()

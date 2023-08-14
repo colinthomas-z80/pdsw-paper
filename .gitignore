@@ -1,3 +1,10 @@
+*.size
 *.png
+*.out
+*.error
+*.output
+debug.*
+gekkohost
 taskvine-env/
 taskvine-env.tar.gz
+vine-run-info/
