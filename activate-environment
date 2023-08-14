@@ -8,6 +8,8 @@ then
 fi
 
 SHARED_DIR=$(pwd)
+HOST_MACHINE=$(hostname)
+
 
 SCRIPT_DIR=$( cd -- "$( dirname -- $(realpath "${BASH_SOURCE[0]}") )" &> /dev/null && pwd )
 ENVIRONMENT="${SCRIPT_DIR}/taskvine-env"
