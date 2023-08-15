@@ -1,0 +1,16 @@
+#!/bin/bash
+
+rm -f twogig.size onegig.size
+
+for i in {1..200}
+do
+	cat tenmeg >> twogig.size
+done
+
+
+for i in {1..100}
+do
+	cat tenmeg >> onegig.size
+done
+
+

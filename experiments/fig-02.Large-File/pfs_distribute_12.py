@@ -1,7 +1,7 @@
 
 
 
-import ndcctools.taskvine as vine
+import taskvine as vine
 import random
 import argparse
 import getpass

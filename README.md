@@ -50,7 +50,6 @@ GekkoFS may be built from source in order to complete a userspace-only installat
 building a GekkoFS installation are found in the gekkofs directory. A precompiled installation for
 Linux x86\_64 is included in the directory, which may be used if available resources match. 
 
-
 ## Outline of Experiments
 
 A TaskVine application consists of a vine manager process and several worker
@@ -66,12 +65,11 @@ Experiments have the following outline:
 
 We can provide detailed instructions for 1 and 2. For 3, submission across
 batch systems greatly varies, thus we only provide examples on how to submit
-jobs to generic HTCondor and SLURM clusters.
+jobs to generic HTCondor clusters.
 
 ## Job Submission (Optional)
 
-We provide the scripts `utils/condor_vine_worker` and `utils/slurm_vine_worker`
-to ease submission of `vine_workers` to HTCondor and SLURM clusters. Note that
+We provide HTCondor submission files used for each experiment. Note that
 these scripts **most likely will need to be modified** to match your particular
 site.
 

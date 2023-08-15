@@ -1,5 +1,5 @@
 
-import ndcctools.taskvine as vine
+import taskvine as vine
 import random
 import argparse
 import getpass
@@ -56,7 +56,7 @@ if __name__ == "__main__":
 
     
     t1 = vine.Task(
-            command = f"LD_PRELOAD={os.getenv('SHARED_DIR')}/gekkofs/install/lib64/libgkfs_intercept.so cp {os.getenv('SHARED_DIR')}/twogig.size /tmp/gekkomnt/twogig.size; LD_PRELOAD{os.getenv('SHARED_DIR')}/gekkofs/install/lib64/libgkfs_intercept.so ls /tmp/gekkomnt/",
+            command = f"LD_PRELOAD={os.getenv('SHARED_DIR')}/gekkofs/install/lib64/libgkfs_intercept.so cp {os.getenv('SHARED_DIR')}/twogig.size /tmp/gekkomnt/twogig.size; LD_PRELOAD={os.getenv('SHARED_DIR')}/gekkofs/install/lib64/libgkfs_intercept.so ls /tmp/gekkomnt/",
     )
     task_id = m.submit(t1)
     print("Copying into gekkofs")

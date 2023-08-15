@@ -3,6 +3,8 @@
 *.out
 *.error
 *.output
+out
+err
 debug.*
 gekkohost
 taskvine-env/
