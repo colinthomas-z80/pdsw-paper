@@ -3,5 +3,5 @@ channels:
   - conda-forge
 dependencies:
   - python=3.10
-  - ndcctools=7.5.2
+  - ndcctools=7.6.2
   - git
